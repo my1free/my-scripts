@@ -9,7 +9,7 @@ count=`ls $RecyclePath | grep $1 | wc -l`
 ((No=$count+1))
 
 if [ $count -gt 0 ];then
-    targetName="${timeNow}_${No}_$1"
+    targetName="${timeNow}_$1_${No}"
 else
     targetName="${timeNow}_$1"
 fi
