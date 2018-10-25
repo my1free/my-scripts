@@ -4,14 +4,16 @@ RecyclePath="$HOME/Recycle"
 
 timeNow=`date +"%Y%m%d"`
 
-count=`ls $RecyclePath | grep $1 | wc -l`
+name=`echo $1 | sed -e "s/\///g"`
+
+count=`ls $RecyclePath | grep $name | wc -l`
 
 ((No=$count+1))
 
 if [ $count -gt 0 ];then
-    targetName="${timeNow}_$1_${No}"
+    targetName=${timeNow}_${name}_${No}
 else
-    targetName="${timeNow}_$1"
+    targetName="${timeNow}_${name}"
 fi
 
 mv $1 $RecyclePath/$targetName
